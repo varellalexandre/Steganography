@@ -1,4 +1,4 @@
-#Resumo
+# Resumo
 O objetivo desse trabalho é aplicar as técnicas de programação aprendidas nas disciplinas de
 PTP e ITP em uma situação prática. A esteganografia é o fato de esconder mensagens nas imagens,
 e a partir das práticas desenvolvidas em sala foi possível desenvolver um programa capaz de
@@ -18,7 +18,7 @@ armazenar uma letra seriam necessários 8 Bytes de informação na imagem pois s
 apenas o ultimo bit de cada imagem. Foram utilizadas imagens coloridas com 24 bits nesse trabalho,
 nos formatos PPM e BMP e todo o código deveria ser escrito na linguagem C.
 
-Biblioteca pxx.h
+## Biblioteca pxx.h
 PX : um enum que tinha valores P1,P2,P3,P4,P5,P6 partindo do 1. Esse enum foi criado para
 facilitar e tornar o código mais legivel quando fosse verificado o tipo da imagem.
 PXX: uma struct que serviria como uma estrutura mãe para todos os tipos de PPM, a ideia
@@ -30,12 +30,12 @@ PBM: uma struct voltada para armazenar o tipo PBM.
 PGM: uma struct voltada para armazenar o tipo PGM.
 PPM: uma struct voltada para armazenar o tipo PPM.
 
-Biblioteca converter.h
+## Biblioteca converter.h
 Biblioteca voltada para a conversão de inteiros para cadeias de caracteres binárias. Essa
 biblioteca é fundamental na hora da encriptação da informação pois através da função decToBin é
 possível converter o valor inteiro do caractere para bits.
 
-Biblioteca leiturappm.h
+## Biblioteca leiturappm.h
 Essa biblioteca é fundamental para a encriptação do programa, como foi dito mais acima eu
 criei todo o programa para leitura, encriptação e desencriptação do PPM para depois fazer a parte
 do BMP, portanto essa biblioteca no começo tinha a função de encriptação e desencriptação.
@@ -56,7 +56,7 @@ conteúdo do ficheiro como um char . A alocação foi feita através da varredur
 contando a quantidade de caracteres e em seguida reseta para posição inicial do arquivo atraves da
 função rewind e em seguida aloca a mensagem do tamanho desejado e lê-a.
 
-Encriptação
+## Encriptação
 Para encriptação em um primeiro momento utilizei operações de resto de divisão, porém o
 código ficou bastante confuso e ineficiente. Em seguida, usei as operações de bitwise para eliminar
 o ultimo bit do pixel da imagem e acrescentar a ele o valor do digito convertido na função decToBin
@@ -66,7 +66,7 @@ retorna o caractere númerico 1 ou 0 por isso a necessidade de subtrair o valor 
 basicamente a operação era usar a máscara 11111110 para eliminar o ultimo bit do componente do
 pixel da imagem e em seguida acrecer o valor do bit da letra.
 
-Desencriptação
+## Desencriptação
 A desencriptação da imagem é basicamente o processo inverso do anterior, verificar o ultimo
 bit e utilizar de potências de base 2 para conseguir o valor decimal do caractere. Portanto a função
 decript basicamente verificava se um o bit era divisivel por 2, se sim ele tinha ultimo bit igual a 0 se
@@ -74,7 +74,7 @@ não ele tinha o ultimo bit igual a 1. Outra forma possível é através de uma 
 anterior, essa mascara deveria isolar apenas o ultimo bit portanto o seu valor deveria ser 00000001
 dessa forma com a operação & teria apenas o ultimo bit.
 
-BMP
+## BMP
 Para o BMP eu utilizei os mesmos conceitos do PPM, a grande diferença do BMP para o
 PPM é a leitura do arquivo que deve ser ao contrário, por isso a única informação que precisava
 realmete ser convertida foram as dimensões da imagem. Eu passei bastante tempo tentando fazer
@@ -89,7 +89,7 @@ uma função muito demorada, foi utilizado o fread, e a largura e comprimento qu
 para o programa,pois sem eles não daria para alocar o RGB, foi usado fseek para setar a posição
 tendo em vista o BMP ter um cabeçalho fixo e depois a função que lê invertido.
 
-Bibliografia
+## Bibliografia
 1. PHILIPS, Dwane. Image Processing in C. 2nd Edition. Lawrence: R &D Publications, 1994.
 1. LOPES, João Manuel Brisson. Formatos de Imagem. 2003. Disponível em:
 http://disciplinas.ist.utl.pt/~leic-cg.daemon/textos/livro/Formatos%20de%20Imagem.pdf. Acesso
